@@ -23,19 +23,43 @@ const { ListNode } = require('../extensions/list-node.js');
  * }
  */
 function removeKFromList(l, k) {
-  const result = [];
-  for (let i of l) {
-    if (i !== k) {result.push(i);}
+  const indexOf = function(array, element) {
+    let current = array;
+    let index = 0;
+    while(current) {
+      if (current.value === element) {
+        return index;
+      }
+      current = current.next;
+      index++;
+    }
+    return -1;
   }
-  l = result
-  return l;
+  const removeAt(l, position) {
+    let current = l;
+    let position = indexOf(l, k)
+    if (position === 0) {
+      l = current.next;
+    } else {
+      let prev = null;
+      let index = 0;
+
+      while(index < position) {
+        prev = current;
+        current = current.next;
+        index++;
+      }
+      prev.next = current.next;
+    }
+    l.length --;
+    return current.value;
+  }
+  }
+  while(!indexOf(l, k)) {
+    removeAt(l, indexOf(l, k))
 }
 
 module.exports = {
   removeKFromList
 };
 
-
-let arr = [3, 1, 2, 3, 4, 5];
-removeKFromList(arr, 3);
-console.log(removeKFromList(arr, 3))
