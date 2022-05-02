@@ -38,9 +38,8 @@ class BinarySearchTree {
   }
   }
 
-  has(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  has(data) {
+    return !!this.find(data);
   }
 
   find(data, node = this.rootTree) {
@@ -103,15 +102,3 @@ module.exports = {
   BinarySearchTree
 };
 
-const tree = new BinarySearchTree();
-tree.add(9);
-tree.add(14);
-tree.add(54);
-tree.add(2);
-tree.add(6);
-tree.add(8);
-tree.add(31);
-tree.add(1);
-tree.remove(6);
-tree.remove(2);
-console.log(tree.min())
